@@ -14,12 +14,6 @@
   
  */
 
-// OSX:
-char ctrlKey = KEY_LEFT_GUI;
-
-// Windows and Linux:
-//char ctrlKey = KEY_LEFT_CTRL;  
-
 // 
 const int button1Pin = 2;
 
@@ -98,7 +92,7 @@ void loop()
     Serial.println("button1 pressed");
 
     // Call function to send the keypress
-    refreshBrowser();
+    globalHotkey1();
 
     digitalWrite(led, LOW);
   }
@@ -123,7 +117,7 @@ void loop()
     Serial.println("button2 pressed");
 
     // Call function to send the keypress
-    toggleMicrophone();
+    globalHotkey2();
 
     digitalWrite(led, LOW);
   }
@@ -148,7 +142,7 @@ void loop()
     Serial.println("button3 pressed");
 
     // Call function to send the keypress
-    toggleVideo();
+    globalHotkey3();
 
     digitalWrite(led, LOW);
   }
@@ -173,7 +167,7 @@ void loop()
     Serial.println("button4 pressed");
 
     // Call function to send the keypress
-    hangUp();
+    globalHotkey4();
 
     digitalWrite(led, LOW);
   }
@@ -198,7 +192,7 @@ void loop()
     Serial.println("button5 pressed");
 
     // Call function to send the keypress
-    //toggleMicrophone();
+    globalHotkey5();
 
     digitalWrite(led, LOW);
   }
@@ -210,10 +204,86 @@ void loop()
 /*
  * 
  */
+void globalHotkey1()
+{
+  // Global hotkey, toggle microphone: Command+Control+Shift+1
+  Keyboard.press(KEY_LEFT_GUI); // Mac Command Key or Windows Key
+  Keyboard.press(KEY_LEFT_CTRL);
+  Keyboard.press(KEY_LEFT_SHIFT);
+  Keyboard.press('1');
+  delay(50);
+  Keyboard.releaseAll();
+}
+
+/*
+ * 
+ */
+void globalHotkey2()
+{
+  // Global hotkey, toggle microphone: Command+Control+Shift+2
+  Keyboard.press(KEY_LEFT_GUI); // Mac Command Key or Windows Key
+  Keyboard.press(KEY_LEFT_CTRL);
+  Keyboard.press(KEY_LEFT_SHIFT);
+  Keyboard.press('2');
+  delay(50);
+  Keyboard.releaseAll();
+}
+
+/*
+ * 
+ */
+void globalHotkey3()
+{
+  // Global hotkey, toggle video: Command+Control+Shift+3
+  Keyboard.press(KEY_LEFT_GUI); // Mac Command Key or Windows Key
+  Keyboard.press(KEY_LEFT_CTRL);
+  Keyboard.press(KEY_LEFT_SHIFT);
+  Keyboard.press('3');
+  delay(50);
+  Keyboard.releaseAll();
+}
+
+/*
+ * 
+ */
+void globalHotkey4()
+{
+  // Global hotkey, hangup: Command+Control+Shift+4
+  Keyboard.press(KEY_LEFT_GUI); // Mac Command Key or Windows Key
+  Keyboard.press(KEY_LEFT_CTRL);
+  Keyboard.press(KEY_LEFT_SHIFT);
+  Keyboard.press('4');
+  delay(50);
+  Keyboard.releaseAll();
+}
+
+/*
+ * 
+ */
+void globalHotkey5()
+{
+  // Global hotkey, hangup: Command+Control+Shift+5
+  Keyboard.press(KEY_LEFT_GUI); // Mac Command Key or Windows Key
+  Keyboard.press(KEY_LEFT_CTRL);
+  Keyboard.press(KEY_LEFT_SHIFT);
+  Keyboard.press('5');
+  delay(50);
+  Keyboard.releaseAll();
+}
+
+
+//
+//
+//
+
+
+/*
+ * 
+ */
 void toggleMicrophone()
 {
   // MS Teams, toggle microphone: Command+Shift+m
-  Keyboard.press(ctrlKey);
+  Keyboard.press(KEY_LEFT_GUI);
   Keyboard.press(KEY_LEFT_SHIFT);
   Keyboard.press('m');
   delay(50);
@@ -226,7 +296,7 @@ void toggleMicrophone()
 void toggleVideo()
 {
   // MS Teams, toggle video: Command+Shift+o
-  Keyboard.press(ctrlKey);
+  Keyboard.press(KEY_LEFT_GUI);
   Keyboard.press(KEY_LEFT_SHIFT);
   Keyboard.press('o');
   delay(50);
@@ -239,7 +309,7 @@ void toggleVideo()
 void hangUp()
 {
   // MS Teams, toggle video: Command+Shift+b
-  Keyboard.press(ctrlKey);
+  Keyboard.press(KEY_LEFT_GUI);
   Keyboard.press(KEY_LEFT_SHIFT);
   Keyboard.press('b');
   delay(50);
@@ -276,7 +346,7 @@ void declineCall()
 void refreshBrowser()
 {
   // Send a control-r key combination.
-  Keyboard.press(ctrlKey);
+  Keyboard.press(KEY_LEFT_GUI); // Mac Command Key or Windows Key;
   Keyboard.press('r');
   delay(50);
   Keyboard.releaseAll();
@@ -299,7 +369,7 @@ void deviceOff()
   //  Keyboard.press('0');
   
   // Send Control 0
-  Keyboard.press(ctrlKey);
+  Keyboard.press(KEY_LEFT_GUI); // Mac Command Key or Windows Key
   Keyboard.press('0');
   delay(50);
   Keyboard.releaseAll();  
@@ -315,7 +385,7 @@ void deviceOn()
   //  Keyboard.press('1');
   
   // Send Control 1
-  Keyboard.press(ctrlKey);
+  Keyboard.press(KEY_LEFT_GUI); // Mac Command Key or Windows Key
   Keyboard.press('1');
   delay(50);
   Keyboard.releaseAll();  
@@ -330,7 +400,7 @@ void deviceToggle()
   //  Keyboard.press(KEY_LEFT_GUI);
   //  Keyboard.press('3');
   // Send Control 2
-  Keyboard.press(ctrlKey);
+  Keyboard.press(KEY_LEFT_GUI); // Mac Command Key or Windows Key
   Keyboard.press('2');
   delay(50);
   Keyboard.releaseAll();  
